@@ -1,40 +1,21 @@
-class Member {
-    constructor(name,position){
-        this.name = name;
-        this.position =position;
-    }
-}
-class Team{
-    constructor(id,name){
-        this.id= id;
-        this.name = name;
-        this.members = [];
+/***  1: When the button is clicked, a new paragraph should be added to the div.
+2: The content of the paragraph should be the text entered into the input element.
+3: The input element's text should be cleared when the button is pre */
 
-    }
-    addMember(member){
-        this.members.push(member);
+let paragraphId = 0;
 
-    }
-   deleteMember(member){
-    let index = this.members.indexOf(member);
-    this.members.splice(index,1);
-   }
-}
-let team = [];
-let teamId = 0;
- 
-onclick('new-team',() => {
-    team.push(new Team(teamId++,gotvalue('new-team-name'))); 
+document.getElementById('addButton').addEventListener('click', () => {
+  // Locate the parent 
+  let parent = document.getElementById('p-div');
+
+  // Create a new element
+  let newElement = document.createElement('p');
+  newElement.textContent = document.getElementById('p-input').value;
+  newElement.setAttribute('id', paragraphId++);
+// Attach to the parent
+parent.appendChild(newElement);
+
+// Clear out the input box after adding the element
+document.getElementById('p-input').value = '';
 });
-
-function onclick(id,action){
-    let element= document.getElementById (id);
-    element.addEventListener('click',action);
-return  element;
-}
-
-function getvalue(id){
-    return document.getElementById(id).value;
-}
-
 

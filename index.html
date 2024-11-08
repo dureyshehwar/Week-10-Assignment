@@ -6,27 +6,36 @@
     <title>Team App</title>
 <link rel="stylesheet" href = "node_modules/bootstrap/dist/css/bootstrap.css">
 </head>
-<body  class="container">
 
-    <br>
-<div class="card">
- <div class="card body">
-   <div class="row">
-    <div class="col-sm">
-     <div class="form-group">
-    <label  for="new-team-name">Team name</label>
-    <input type="text" class="form-control" id="new-team-name">
-     </div>   
-    </div>
-   </div>
- </div>
- <button  id="new-team" class="btn btn-primary form-contorl">Create</button>
-</div>
-<div>
-</div></br>
+<body>
+  <input type="text" id="textInput" placeholder="Enter text here">
+  <button id="addButton">Add Paragraph</button>
+  <div id="textContainer"></div>
+  <script>
+    // Get references to elements
+    const input = document.getElementById('textInput');
+    const button = document.getElementById('addButton');
+    const container = document.getElementById('textContainer');
 
-<div id="teams">
-</div>
+    // Add event listener to the button
+    button.addEventListener('click', function() {
+      // Get the input value
+      const inputValue = input.value;
+
+      // Only proceed if input is not empty
+      if (inputValue.trim() !== "") {
+        // Create a new paragraph element
+        const newParagraph = document.createElement('p');
+        newParagraph.textContent = inputValue;
+
+        // Append the new paragraph to the container
+        container.appendChild(newParagraph);
+
+        // Clear the input field
+        input.value = '';
+      }
+    });
+  </script>
 
 <script src="node_modules/jquery/dist/jquery.js"></script>
 <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
